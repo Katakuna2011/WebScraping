@@ -56,15 +56,7 @@ namespace WebScraper.Driver
                         }
                         else
                         {
-                            foreach (var crash in items)
-                            {
-                                if (crash.Multiplicador >= 2)
-                                {                                    
-                                    Console.Write(crash.Multiplicador.ToString(), ConsoleColor.Green + " - ");
-                                }
-                                else
-                                    Console.Write(crash.Multiplicador.ToString(), ConsoleColor.Red + " - ");
-                            }
+                            //Console.Clear();
 
                             Console.WriteLine($"CRASH ATUAL: {items[0].Multiplicador}\n");
 
@@ -72,7 +64,7 @@ namespace WebScraper.Driver
 
                             try
                             {
-                                var fechaHistoricoCrash = Click(TypeElement.Xpath, "//*[@id=\"root\"]/main/div[3]/div/div[1]/i", 3);
+                                var fechaHistoricoCrash = Click(TypeElement.Xpath, "//*[@id=\"root\"]/main/div[3]/div/div[1]/i", 10);
                             }
                             catch (Exception)
                             {
@@ -83,17 +75,11 @@ namespace WebScraper.Driver
                             {
                                 var newCrashElement = GetValue(TypeElement.Xpath, "//*[@id=\"crash-recent\"]/div[2]/div[2]/span[1]").Value;
                                 Item newItemCrash = new Item(decimal.Parse(RemoveChar(newCrashElement)));
-
                                 items.RemoveAt(99);
                                 items.Insert(0, newItemCrash);
 
-                                Console.WriteLine($"CRASH ATUAL: multiplidaor do índice 0 -> {items[0].Multiplicador}\n");
-
                                 var prob = new Probabilidade(GetProbability(items));
                                 Console.WriteLine(prob.ToString()+"\n");
-
-                                Console.WriteLine(prob.ToString());
-                                Console.WriteLine($"CRASH ATUAL: multiplicador coletado no site -> {newCrashElement}\n");
 
                                 if (prob.ProbabilidadeAtual == porcentagemAlvo)
                                 {
