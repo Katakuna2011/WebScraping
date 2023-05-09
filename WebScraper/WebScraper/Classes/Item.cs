@@ -10,13 +10,9 @@ namespace WebScraper.Classes
     {
         public string Identificador { get; }
 
-        public string Multiplicador { get; set; }
+        public decimal Multiplicador { get; set; }
 
-        decimal _probabilidade;
-        public decimal Probabilidade { get { return _probabilidade; } set { _probabilidade = _probabilidade / 100; } }
-
-        int _porcentagem;
-        public int Porcentagem { get { return _porcentagem; } set { _porcentagem = (int)Probabilidade * 100; } }
+        
 
         DateTime _dataEHora;
         public DateTime DataEHora { get { return _dataEHora; } set { _dataEHora = DateTime.Now; } }
@@ -25,13 +21,16 @@ namespace WebScraper.Classes
         {
             Identificador = Guid.NewGuid().ToString().Substring(0, 6);
         }
+        public Item(decimal multiplicador)
+        {
+            Identificador = Guid.NewGuid().ToString().Substring(0, 6);
+            Multiplicador = multiplicador;
+        }
 
         public override string ToString()
         {
             return $"========== Blaze Crash ==========\n" +
-                $">>>> Crash atual: {Multiplicador}\n" +
-                $">>>> Probabilidade atual: {Probabilidade} - {Probabilidade * 100}/100\n" +
-                $">>>> Porcentagem: {Porcentagem}%\n" +
+                $">>>> Crash atual: {Multiplicador}\n" +               
                 $">>>> Data e hora: {DataEHora}\n";
         }
     }
