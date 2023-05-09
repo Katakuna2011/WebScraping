@@ -13,10 +13,11 @@ internal class Program
             var web = new WebScraperBlaze();
             web.GetData("https://blaze.com/pt/games/crash", alvo, destino);
         }
-        catch (Exception)
+        catch (Exception e)
         {
             Console.WriteLine("Houve um erro...");
-            throw;
+            Console.WriteLine(e.Message, e.InnerException);
+            throw new Exception(e.Message, e.InnerException);
         }
         finally
         {
