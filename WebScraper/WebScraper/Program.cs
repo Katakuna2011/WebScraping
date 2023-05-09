@@ -7,10 +7,10 @@ internal class Program
         int alvo = int.Parse(Console.ReadLine());
 
         Console.Write("Digite o destino da mensagem (conforme salvo no WhatsApp): ");
-        string destino = Console.ReadLine();
-
+        string destino = Console.ReadLine();D
         var web = new WebScraperBlaze();
         web.GetData("https://blaze.com/pt/games/crash", alvo, destino);
         
     }
 }
+
