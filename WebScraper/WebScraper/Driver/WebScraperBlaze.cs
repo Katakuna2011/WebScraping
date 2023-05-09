@@ -18,7 +18,7 @@ namespace WebScraper.Driver
             bool staleElement = true;
 
             if(driver == null)
-                StartBrowser(TypeDriver.GoogleChorme, "C:\\Users\\Bruno\\AppData\\Local\\Google\\Chrome\\User Data");
+                StartBrowser(TypeDriver.GoogleChorme, "C:\\Users\\Administrator\\AppData\\Local\\Google\\Chrome\\User Data");
 
             List<Item> items = new List<Item>();
 
